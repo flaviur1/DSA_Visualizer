@@ -3,21 +3,27 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Menu from "./components/Menu";
 import NotFound from "./pages/NotFound";
+import MainView from "./components/MainView";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const [array, setArray] = useState([]);
+  const [currentOperation, setCurrentOperation] = useState("bubble-sort");
 
-  const addElem = (arr, elem) => {};
+  const addElem = () => {};
+
+  console.log(currentOperation);
 
   return (
     <div>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Menu />
+      </BrowserRouter> */}
+      <BrowserRouter>
+        <Menu onSelectOperation={setCurrentOperation} />
+        <MainView currentOperation={currentOperation} />
       </BrowserRouter>
 
       <h1>Hello World</h1>
