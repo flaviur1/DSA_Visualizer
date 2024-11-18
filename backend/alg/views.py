@@ -1,12 +1,52 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 
+from django.http import JsonResponse
 # Create your views here.
 
+
 def bubble_sort_steps(request):
-    steps = [
-        {1: "Compare adjecent elements."},
-        {2: "Swap them if the conditions are met."},
-        {3: "Keep going on until the end of the array."}
-    ]
-    return render(request, "index.html", {"steps" :steps})
+    steps = []
+    try:
+        data = request.data
+        arr = data.get("array", None)
+
+        step_nr = 1
+
+        for i in range(len(arr)):
+            swapped = False
+            steps.append(
+                {"number": step_nr, "text": 'Set the "swapped" variable to False for this iteration.'})
+            step_nr += step_nr
+            for j in range(0, len(arr)-i-1):
+                steps.append(
+                    {"number": step_nr, "text": "Check if the current value is bigger than the next."})
+                step_nr += step_nr
+                if arr[j] > arr[j+1]:
+                    steps.append(
+                        {"number": step_nr, "text": "Switch the positions of the values."})
+                    step_nr += step_nr
+                    aux = arr[j]
+                    arr[j] = arr[j+1]
+                    arr[j+1] = aux
+                    swapped = True
+            if (swapped == False):
+                break
+
+            # def bubbleSort(arr):
+            #     for i in range(len(arr)):
+            #         swapped = False
+            #         for j in range(0, len(arr)-i-1):
+            #             if arr[j] > arr[j+1]:
+            #                 aux = arr[j]
+            #                 arr[j] = arr[j+1]
+            #                 arr[j+1] = aux
+            #                 swapped = True
+            #         if (swapped == False):
+            #             break
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+    # we sent an array of dictionaries so we have to turn safe off
+    return JsonResponse(steps, safe=False)
+    # we don't need serializers, because the data we send is already in a json format, and it doesn't need extra
+    # verification or modifications after we send it
