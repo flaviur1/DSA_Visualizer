@@ -17,8 +17,9 @@ function App() {
         <Routes>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Menu />
       </BrowserRouter>
-      <Menu />
+
       <h1>Hello World</h1>
     </div>
   );

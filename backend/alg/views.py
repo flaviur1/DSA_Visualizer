@@ -10,38 +10,45 @@ def bubble_sort_steps(request):
         arr = data.get("array", None)
 
         step_nr = 1
+        iteration_nr = 1
 
         for i in range(len(arr)):
             swapped = False
             steps.append(
-                {"number": step_nr, "text": 'Set the "swapped" variable to False for this iteration.'})
-            step_nr += step_nr
+                {"iteration": iteration_nr, "step": step_nr, "text": 'Set the "swapped" variable to False for this iteration.'})
+            step_nr += 1
             for j in range(0, len(arr)-i-1):
                 steps.append(
-                    {"number": step_nr, "text": "Check if the current value is bigger than the next."})
-                step_nr += step_nr
+                    {"iteration": iteration_nr, "step": step_nr, "text": "Check if the current value is bigger than the next."})
+                step_nr += 1
                 if arr[j] > arr[j+1]:
                     steps.append(
-                        {"number": step_nr, "text": "Switch the positions of the values."})
-                    step_nr += step_nr
+                        {"iteration": iteration_nr, "step": step_nr, "text": "Switch the positions of the values."})
+                    step_nr += 1
                     aux = arr[j]
                     arr[j] = arr[j+1]
                     arr[j+1] = aux
                     swapped = True
+                else:
+                    steps.append(
+                        {"iteration": iteration_nr, "step": step_nr, "text": "Do not switch the positions of the values."})
+                    step_nr += 1
+
+            iteration_nr += 1
             if (swapped == False):
                 break
 
-            # def bubbleSort(arr):
-            #     for i in range(len(arr)):
-            #         swapped = False
-            #         for j in range(0, len(arr)-i-1):
-            #             if arr[j] > arr[j+1]:
-            #                 aux = arr[j]
-            #                 arr[j] = arr[j+1]
-            #                 arr[j+1] = aux
-            #                 swapped = True
-            #         if (swapped == False):
-            #             break
+        # def bubbleSort(arr):
+        #     for i in range(len(arr)):
+        #         swapped = False
+        #         for j in range(0, len(arr)-i-1):
+        #             if arr[j] > arr[j+1]:
+        #                 aux = arr[j]
+        #                 arr[j] = arr[j+1]
+        #                 arr[j+1] = aux
+        #                 swapped = True
+        #         if (swapped == False):
+        #             break
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)

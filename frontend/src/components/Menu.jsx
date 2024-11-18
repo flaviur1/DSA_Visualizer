@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Drawer, IconButton } from "@mui/material";
-import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
+import { SimpleTreeView, TreeItem2 } from "@mui/x-tree-view";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
-const Menu = () => {
+function Menu() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -16,8 +18,8 @@ const Menu = () => {
     setIsOpen(open);
   };
 
-  const handleNodeClick = (nodeId) => {
-    console.log(`Clicked node: ${nodeId}`);
+  const handleNodeClick = (path) => {
+    navigate(path);
   };
 
   return (
@@ -27,39 +29,37 @@ const Menu = () => {
       </IconButton>
 
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
-        <SimpleTreeView
-          sx={{ width: 250, padding: 2 }}
-        >
-          <TreeItem itemId="1" label="Algorithms">
-            <TreeItem itemId="2" label="Sorting">
-              <TreeItem
+        <SimpleTreeView sx={{ width: 250, padding: 2 }}>
+          <TreeItem2 itemId="1" label="Algorithms">
+            <TreeItem2 itemId="2" label="Sorting">
+              <TreeItem2
                 itemId="3"
                 label="Bubble Sort"
-                onClick={() => handleNodeClick("bubble-sort")}
+                onClick={() => handleNodeClick("/alg/bubble-sort/")}
               />
-              <TreeItem
+              <TreeItem2
                 itemId="4"
                 label="Quick Sort"
-                onClick={() => handleNodeClick("quick-sort")}
+                onClick={() => handleNodeClick("/alg/quick-sort/")}
               />
-            </TreeItem>
-          </TreeItem>
-          <TreeItem itemId="8" label="Data Structures">
-            <TreeItem
+            </TreeItem2>
+          </TreeItem2>
+          <TreeItem2 itemId="8" label="Data Structures">
+            <TreeItem2
               itemId="9"
               label="Stack"
-              onClick={() => handleNodeClick("stack")}
+              onClick={() => handleNodeClick("/ds/stack/")}
             />
-            <TreeItem
+            <TreeItem2
               itemId="10"
               label="Queue"
-              onClick={() => handleNodeClick("queue")}
+              onClick={() => handleNodeClick("/ds/queue/")}
             />
-          </TreeItem>
+          </TreeItem2>
         </SimpleTreeView>
       </Drawer>
     </>
   );
-};
+}
 
 export default Menu;
