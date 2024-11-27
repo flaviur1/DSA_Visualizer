@@ -1,13 +1,14 @@
-
+import json
 from django.http import JsonResponse
-# Create your views here.
+from django.views.decorators.http import require_http_methods
 
 
 def bubble_sort_steps(request):
     steps = []
     try:
-        data = request.data
-        arr = data.get("array", None)
+
+        data = json.loads(request.body)
+        arr = data.get("array")
 
         step_nr = 1
         iteration_nr = 1
@@ -49,7 +50,6 @@ def bubble_sort_steps(request):
         #                 swapped = True
         #         if (swapped == False):
         #             break
-
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
