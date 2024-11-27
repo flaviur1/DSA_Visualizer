@@ -15,7 +15,7 @@ function UserOperationsBox({
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000//api/${currentOperation}/`,
+        `http://127.0.0.1:8000//api/alg/${currentOperation}/`,
         {
           array: dataStructure,
         }
