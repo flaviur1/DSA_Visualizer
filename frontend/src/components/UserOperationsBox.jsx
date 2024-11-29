@@ -40,7 +40,7 @@ function UserOperationsBox({
   };
 
   return (
-    <div>
+    <div className="UserBox">
       <button onClick={handleSubmit}>Start Algorithm</button>
       <TextField
         id="standard-basic"

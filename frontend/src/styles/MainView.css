@@ -1,0 +1,29 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: stretch;
+  align-content: stretch;
+  height: 100vh;
+}
+
+.Animation {
+  grid-row: span 3;
+  grid-column: span 2;
+  background-color: pink;
+}
+
+.Code {
+  grid-row: span 2;
+  background-color: red;
+}
+
+.Steps {
+  grid-row: span 2;
+  background-color: green;
+}
+
+.UserOperations {
+  grid-column: span 2;
+}

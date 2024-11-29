@@ -7,7 +7,7 @@ import MainView from "./components/MainView";
 
 function App() {
   const [array, setArray] = useState([]);
-  const [currentOperation, setCurrentOperation] = useState("bubble-sort");
+  const [currentOperation, setCurrentOperation] = useState();
 
   const addElem = () => {};
 
@@ -21,12 +21,13 @@ function App() {
         </Routes>
         <Menu />
       </BrowserRouter> */}
+
       <BrowserRouter>
         <Menu onSelectOperation={setCurrentOperation} />
         <MainView currentOperation={currentOperation} />
       </BrowserRouter>
 
-      <h1>Hello World</h1>
+      
     </div>
   );
 }
