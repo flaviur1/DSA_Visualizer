@@ -19,23 +19,31 @@
 .text-field {
   grid-column: span 1;
   grid-row: span 1;
+  align-self: center;
+  background-color: white;
 }
 
 .insert {
+  font-size: 25px;
 }
 
 .delete {
+  font-size: 25px;
 }
 
 .clear {
+  font-size: 25px;
 }
 
 .start {
-    grid-column: span 2;
+  grid-column: span 2;
+  font-size: 25px;
 }
 
 .previous {
+  font-size: 25px;
 }
 
 .next {
+  font-size: 25px;
 }

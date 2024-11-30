@@ -29,11 +29,11 @@ function UserOperationsBox({
 
   const handleInsert = async () => {
     if (newElement === "") {
-      alert("Please insert the element first");
+      alert("Please enter the element in the text field first.");
       return;
     }
     if (isNaN(parseInt(newElement))) {
-      alert("Please insert an integer only");
+      alert("Please insert a valid integer.");
       return;
     }
     setDataStructure([...dataStructure, parseInt(newElement)]);
@@ -42,13 +42,24 @@ function UserOperationsBox({
 
   const handleDelete = async () => {
     if (newElement === "") {
-      alert("Please insert the element first");
+      alert("Please enter the index in the text field first.");
       return;
     }
     if (isNaN(parseInt(newElement))) {
-      alert("Please insert an integer only");
+      alert("Please enter an index in the form of a number.");
       return;
     }
+    const indexToDelete = parseInt(newElement);
+    if (indexToDelete < 0 || indexToDelete > dataStructure.length - 1) {
+      alert("Please enter an index that is valid.");
+      return;
+    }
+
+    const newData = dataStructure.filter(
+      (val, index) => index !== indexToDelete
+    );
+    setDataStructure(newData);
+    setNewElement("");
   };
 
   const handleClear = async () => {
@@ -59,7 +70,7 @@ function UserOperationsBox({
     <div className="UserOperationsBox">
       <TextField
         id="filled-basic"
-        label="Insert"
+        label="Number"
         variant="filled"
         value={newElement}
         onChange={(e) => {
