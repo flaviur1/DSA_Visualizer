@@ -20,7 +20,7 @@ function MainView({ currentOperation }) {
   return (
     <div class="grid-container">
       <div className="Animation">
-        <AnimationBox />
+        <AnimationBox dataStructure={dataStructure} />
       </div>
       <div className="Code">
         <CodeBox />

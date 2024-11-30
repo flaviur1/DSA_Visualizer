@@ -1,0 +1,41 @@
+.UserOperationsBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  height: 100%;
+  background-color: #2b2a33;
+}
+
+.button {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.big-button {
+  grid-column: span 3;
+}
+
+.text-field {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.insert {
+}
+
+.delete {
+}
+
+.clear {
+}
+
+.start {
+    grid-column: span 2;
+}
+
+.previous {
+}
+
+.next {
+}

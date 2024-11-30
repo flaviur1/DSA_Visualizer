@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
+import "../styles/UserOperations.css";
 
 function UserOperationsBox({
   dataStructure,
@@ -31,7 +32,7 @@ function UserOperationsBox({
       alert("Please insert the element first");
       return;
     }
-    if(parseInt(newElement) === null){
+    if (isNaN(parseInt(newElement))) {
       alert("Please insert an integer only");
       return;
     }
@@ -39,20 +40,57 @@ function UserOperationsBox({
     setNewElement("");
   };
 
+  const handleDelete = async () => {
+    if (newElement === "") {
+      alert("Please insert the element first");
+      return;
+    }
+    if (isNaN(parseInt(newElement))) {
+      alert("Please insert an integer only");
+      return;
+    }
+  };
+
+  const handleClear = async () => {
+    setDataStructure([]);
+  };
+
   return (
-    <div className="UserBox">
-      <button onClick={handleSubmit}>Start Algorithm</button>
+    <div className="UserOperationsBox">
       <TextField
-        id="standard-basic"
+        id="filled-basic"
         label="Insert"
-        variant="standard"
+        variant="filled"
         value={newElement}
         onChange={(e) => {
           setNewElement(e.target.value);
         }}
+        className="text-field"
       />
-      <button onClick={handleInsert}>Submit</button>
-      <p>Current Array: {JSON.stringify(dataStructure)}</p>
+
+      <button className="button insert" onClick={handleInsert}>
+        Insert
+      </button>
+
+      <button className="button delete" onClick={handleDelete}>
+        Delete
+      </button>
+
+      <button className="button clear" onClick={handleClear}>
+        Clear
+      </button>
+
+      <button className="button start" onClick={handleSubmit}>
+        Start Algorithm
+      </button>
+
+      <button className="big-button previous" onClick={handleSubmit}>
+        Previous Step
+      </button>
+
+      <button className="big-button next" onClick={handleSubmit}>
+        Next Step
+      </button>
     </div>
   );
 }
