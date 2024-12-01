@@ -14,7 +14,7 @@ function App() {
   console.log(currentOperation);
 
   return (
-    <div>
+    <div className="app">
       {/* <BrowserRouter>
         <Routes>
           <Route path="*" element={<NotFound />} />
@@ -23,11 +23,9 @@ function App() {
       </BrowserRouter> */}
 
       <BrowserRouter>
-        <Menu onSelectOperation={setCurrentOperation} />
-        <MainView currentOperation={currentOperation} />
+        <Menu onSelectOperation={setCurrentOperation} className="menu" />
+        <MainView currentOperation={currentOperation} className="main-view" />
       </BrowserRouter>
-
-      
     </div>
   );
 }

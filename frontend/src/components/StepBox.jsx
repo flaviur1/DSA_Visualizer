@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function StepBox({ steps }) {
   return (
     <div>
-      <p>Aici va aparea codul</p>
+      <p>Aici vor aparea pasii</p>
     </div>
   );
 }

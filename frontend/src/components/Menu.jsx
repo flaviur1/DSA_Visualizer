@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Drawer, IconButton } from "@mui/material";
 import { SimpleTreeView, TreeItem2 } from "@mui/x-tree-view";
-import MenuIcon from "@mui/icons-material/Menu";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { useNavigate } from "react-router-dom";
 
 function Menu({ onSelectOperation }) {
@@ -24,10 +24,10 @@ function Menu({ onSelectOperation }) {
   };
 
   return (
-    <>
-      <IconButton onClick={toggleDrawer(true)} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
+    <div>
+      <div onClick={toggleDrawer(true)} className="menu-tab">
+        <KeyboardDoubleArrowRightIcon fontSize="large" />
+      </div>
 
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
         <SimpleTreeView sx={{ width: 250, padding: 2 }}>
@@ -63,7 +63,7 @@ function Menu({ onSelectOperation }) {
           </TreeItem2>
         </SimpleTreeView>
       </Drawer>
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,25 @@
+.app {
+  position: relative;
+  height: 100vh;
+  margin: -8px; /* Had to do this to get the site to full page, without scroll bar */
+}
+
+.menu-tab {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 100px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-tab:hover {
+  background-color: gray;
+}
