@@ -18,17 +18,17 @@ function MainView({ currentOperation }) {
   console.log(steps);
 
   return (
-    <div class="grid-container">
-      <div className="Animation">
-        <AnimationBox dataStructure={dataStructure} />
+    <div className="MainView">
+      <div className="AnimationBox">
+        <AnimationBox dataStructure={dataStructure}/>
       </div>
-      <div className="Code">
+      <div className="CodeBox">
         <CodeBox />
       </div>
-      <div className="Steps">
+      <div className="StepsBox">
         <StepBox steps={steps} />
       </div>
-      <div className="UserOperations">
+      <div className="UserOperationsBox">
         <UserOperationsBox
           dataStructure={dataStructure}
           setDataStructure={setDataStructure}

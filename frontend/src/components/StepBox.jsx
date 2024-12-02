@@ -2,11 +2,8 @@
 import { useState, useEffect } from "react";
 
 function StepBox({ steps }) {
-  return (
-    <div>
-      <p>Aici vor aparea pasii</p>
-    </div>
-  );
+    const haha = steps;
+    return <div>{haha}</div>;
 }
 
 export default StepBox;

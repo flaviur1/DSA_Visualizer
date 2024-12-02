@@ -67,7 +67,7 @@ function UserOperationsBox({
   };
 
   return (
-    <div className="UserOperationsBox">
+    <div className="UserOperations">
       <TextField
         id="filled-basic"
         label="Number"
@@ -95,13 +95,9 @@ function UserOperationsBox({
         Start Algorithm
       </button>
 
-      <button className="big-button previous" onClick={handleSubmit}>
-        Previous Step
-      </button>
+      <button className="big-button previous">Previous Step</button>
 
-      <button className="big-button next" onClick={handleSubmit}>
-        Next Step
-      </button>
+      <button className="big-button next">Next Step</button>
     </div>
   );
 }
