@@ -10,6 +10,7 @@ function UserOperationsBox({
   setDataStructure,
   currentOperation,
   onStepsReceived,
+  setNextStep,
 }) {
   const [newElement, setNewElement] = useState("");
 
@@ -97,7 +98,9 @@ function UserOperationsBox({
 
       <button className="big-button previous">Previous Step</button>
 
-      <button className="big-button next">Next Step</button>
+      <button className="big-button next" onClick={setNextStep(true)}>
+        Next Step
+      </button>
     </div>
   );
 }

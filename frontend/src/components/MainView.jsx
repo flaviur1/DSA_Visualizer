@@ -10,6 +10,7 @@ import "../styles/MainView.css";
 function MainView({ currentOperation }) {
   const [steps, setSteps] = useState([]);
   const [dataStructure, setDataStructure] = useState([2, 5, 4, 3, 2, 1]);
+  const [nextStep, setNextStep] = useState(false);
 
   const handleStepsUpdate = (newSteps) => {
     setSteps(newSteps);
@@ -20,13 +21,13 @@ function MainView({ currentOperation }) {
   return (
     <div className="MainView">
       <div className="AnimationBox">
-        <AnimationBox dataStructure={dataStructure}/>
+        <AnimationBox dataStructure={dataStructure} />
       </div>
       <div className="CodeBox">
         <CodeBox />
       </div>
       <div className="StepsBox">
-        <StepBox steps={steps} />
+        <StepBox steps={steps} nextStep={nextStep} setNextStep={setNextStep} />
       </div>
       <div className="UserOperationsBox">
         <UserOperationsBox
@@ -34,6 +35,7 @@ function MainView({ currentOperation }) {
           setDataStructure={setDataStructure}
           currentOperation={currentOperation}
           onStepsReceived={handleStepsUpdate}
+          setNextStep={setNextStep}
         />
       </div>
     </div>
