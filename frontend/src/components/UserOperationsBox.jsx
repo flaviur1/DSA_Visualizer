@@ -10,7 +10,9 @@ function UserOperationsBox({
   setDataStructure,
   currentOperation,
   onStepsReceived,
-  setNextStep,
+  index,
+  setIndex,
+  stepArrayLength,
 }) {
   const [newElement, setNewElement] = useState("");
 
@@ -67,6 +69,16 @@ function UserOperationsBox({
     setDataStructure([]);
   };
 
+  const handleNext = () => {
+    if (index < stepArrayLength -1 ) index++;
+    setIndex(index);
+  };
+
+  const handlePrevious = () => {
+    if (index >= 0) index--;
+    setIndex(index);
+  };
+
   return (
     <div className="UserOperations">
       <TextField
@@ -96,9 +108,11 @@ function UserOperationsBox({
         Start Algorithm
       </button>
 
-      <button className="big-button previous">Previous Step</button>
+      <button className="big-button previous" onClick={handlePrevious}>
+        Previous Step
+      </button>
 
-      <button className="big-button next" onClick={setNextStep(true)}>
+      <button className="big-button next" onClick={handleNext}>
         Next Step
       </button>
     </div>
