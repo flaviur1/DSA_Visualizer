@@ -13,7 +13,9 @@ function AnimationBox({ dataStructure }) {
   };
 
   return (
-    <div>{dataStructure.map((number, index) => makeSquare(number, index))}</div>
+    <div className="AnimationBox">
+      {dataStructure.map((number, index) => makeSquare(number, index))}
+    </div>
   );
 }
 
