@@ -16,15 +16,18 @@ def bubble_sort_steps(request):
         for i in range(len(arr)):
             swapped = False
             steps.append(
-                {"iteration": iteration_nr, "step": step_nr, "text": 'Set the "swapped" variable to False for this iteration.'})
+                {"iteration": iteration_nr, "step": step_nr, "text": 'Set the "swapped" variable to False for this iteration.',
+                 "changeAnim": False, "indexA": None, "indexB":None, "animType": None})
             step_nr += 1
             for j in range(0, len(arr)-i-1):
                 steps.append(
-                    {"iteration": iteration_nr, "step": step_nr, "text": "Check if the current value is bigger than the next."})
+                    {"iteration": iteration_nr, "step": step_nr, "text": "Check if the current value is bigger than the next.",
+                     "changeAnim": True, "indexA": i, "indexB":j, "animType": "check"})
                 step_nr += 1
                 if arr[j] > arr[j+1]:
                     steps.append(
-                        {"iteration": iteration_nr, "step": step_nr, "text": "Switch the positions of the values."})
+                        {"iteration": iteration_nr, "step": step_nr, "text": "Switch the positions of the values.",
+                         "changeAnim": True, "indexA": i, "indexB":j, "animType": "switch"})
                     step_nr += 1
                     aux = arr[j]
                     arr[j] = arr[j+1]
@@ -32,7 +35,8 @@ def bubble_sort_steps(request):
                     swapped = True
                 else:
                     steps.append(
-                        {"iteration": iteration_nr, "step": step_nr, "text": "Do not switch the positions of the values."})
+                        {"iteration": iteration_nr, "step": step_nr, "text": "Do not switch the positions of the values.",
+                         "changeAnim": False, "indexA": None, "indexB":None, "animType": "failed"})
                     step_nr += 1
 
             iteration_nr += 1
