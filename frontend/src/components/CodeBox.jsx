@@ -3,18 +3,18 @@ import { useState, useEffect } from "react";
 
 function CodeBox() {
   return (
-    <div>
-      <p>       <p>def bubbleSort(arr):</p> 
-            <p>for i in range(len(arr)):</p>
-                swapped = False
-                for j in range(0, len(arr)-i-1):
-                   <p>if arr[j]  arr[j+1]:</p> 
-                        aux = arr[j]
-                        arr[j] = arr[j+1]
-                        arr[j+1] = aux
-                        swapped = True
-                if (swapped == False):
-                    break</p>
+    <div style={{ whiteSpace: 'pre' }}>
+      <p>def bubbleSort(arr):</p>
+      <p>    for i in range(len(arr)):</p>
+      <p>        swapped = False</p>
+      <p>        for j in range(0, len(arr)-i-1):</p>
+      <p>            if arr[j] {'>'} arr[j+1]:</p>
+      <p>                aux = arr[j]</p>
+      <p>                arr[j] = arr[j+1]</p>
+      <p>                arr[j+1] = aux</p>
+      <p>                swapped = True</p>
+      <p>        if (swapped == False):</p>
+      <p>            break</p>
     </div>
   );
 }

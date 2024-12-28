@@ -17,6 +17,11 @@ function MainView({ currentOperation }) {
   };
 
   console.log(steps);
+  useEffect(() => {
+    if (steps.length !== 0 && index >= 0) {
+      setDataStructure(steps[index].arr);
+    }
+  }, [steps, index]);
 
   return (
     <div className="MainView">
