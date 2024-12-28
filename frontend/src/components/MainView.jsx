@@ -21,7 +21,11 @@ function MainView({ currentOperation }) {
   return (
     <div className="MainView">
       <div className="AnimationBox">
-        <AnimationBox dataStructure={dataStructure} />
+        <AnimationBox
+          dataStructure={dataStructure}
+          steps={steps}
+          stepIndex={index}
+        />
       </div>
       <div className="CodeBox">
         <CodeBox />

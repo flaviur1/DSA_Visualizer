@@ -16,3 +16,7 @@
   position: absolute;
   transform: translateX(25px) translateY(-25px);
 }
+
+.selected {
+  outline-color: aqua;
+}
