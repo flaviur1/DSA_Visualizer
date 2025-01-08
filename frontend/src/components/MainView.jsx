@@ -1,16 +1,18 @@
 // In this component we combine the TextBox, UserOperationsBox, CodeBox and AnimationBox components
 
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import AnimationBox from "./AnimationBox";
 import CodeBox from "./CodeBox";
 import StepBox from "./StepBox";
 import UserOperationsBox from "./UserOperationsBox";
 import "../styles/MainView.css";
 
-function MainView({ currentOperation }) {
+function MainView() {
   const [steps, setSteps] = useState([]);
   const [dataStructure, setDataStructure] = useState([2, 5, 4, 3, 2, 1]);
   const [index, setIndex] = useState(-1);
+  const { operation } = useParams();
 
   const handleStepsUpdate = (newSteps) => {
     setSteps(newSteps);
@@ -42,7 +44,7 @@ function MainView({ currentOperation }) {
         <UserOperationsBox
           dataStructure={dataStructure}
           setDataStructure={setDataStructure}
-          currentOperation={currentOperation}
+          currentOperation={operation}
           onStepsReceived={handleStepsUpdate}
           index={index}
           setIndex={setIndex}

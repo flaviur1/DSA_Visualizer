@@ -17,21 +17,13 @@
   transform: translateX(25px) translateY(-25px);
 }
 
-@keyframes moveToComparisonLeft {
+@keyframes moveToComparison {
   from {
     transform: translateY(0);
   }
 
   to {
     transform: translateY(100px);
-  }
-}
-
-@keyframes moveToComparisonRight {
-  from {
-  }
-
-  to {
   }
 }
 
@@ -45,5 +37,5 @@
   animation-iteration-count: ;
   animation-direction: ;
   animation-fill-mode: ; */
-  /* animation: moveToComparisonLeft 10s; */
+  animation: moveToComparison ;
 }

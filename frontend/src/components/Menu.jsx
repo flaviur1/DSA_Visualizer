@@ -4,7 +4,7 @@ import { SimpleTreeView, TreeItem2 } from "@mui/x-tree-view";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { useNavigate } from "react-router-dom";
 
-function Menu({ onSelectOperation }) {
+function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -18,9 +18,9 @@ function Menu({ onSelectOperation }) {
     setIsOpen(open);
   };
 
-  const handleNodeClick = (path, operation) => {
+  const handleNodeClick = (path) => {
     navigate(path);
-    onSelectOperation(operation);
+    setIsOpen(false);
   };
 
   return (
@@ -36,16 +36,12 @@ function Menu({ onSelectOperation }) {
               <TreeItem2
                 itemId="3"
                 label="Bubble Sort"
-                onClick={() =>
-                  handleNodeClick("/alg/bubble-sort/", "bubble-sort")
-                }
+                onClick={() => handleNodeClick("/alg/bubble-sort")}
               />
               <TreeItem2
                 itemId="4"
                 label="Quick Sort"
-                onClick={() =>
-                  handleNodeClick("/alg/quick-sort/", "quick-sort")
-                }
+                onClick={() => handleNodeClick("/alg/quick-sort")}
               />
             </TreeItem2>
           </TreeItem2>
@@ -53,12 +49,12 @@ function Menu({ onSelectOperation }) {
             <TreeItem2
               itemId="9"
               label="Stack"
-              onClick={() => handleNodeClick("/ds/stack/", "stack")}
+              onClick={() => handleNodeClick("/ds/stack")}
             />
             <TreeItem2
               itemId="10"
               label="Queue"
-              onClick={() => handleNodeClick("/ds/queue/", "queue")}
+              onClick={() => handleNodeClick("/ds/queue")}
             />
           </TreeItem2>
         </SimpleTreeView>

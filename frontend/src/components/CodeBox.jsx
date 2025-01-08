@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 function CodeBox() {
   return (
     <div style={{ whiteSpace: 'pre' }}>
+      <h3>Code</h3>
       <p>def bubbleSort(arr):</p>
       <p>    for i in range(len(arr)):</p>
       <p>        swapped = False</p>

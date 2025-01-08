@@ -22,7 +22,7 @@ def bubble_sort_steps(request):
             for j in range(0, len(arr)-i-1):
                 steps.append(
                     {"iteration": iteration_nr, "step": step_nr, "text": "Check if the current value is bigger than the next.",
-                     "arr":arr.copy(), "changeAnim": True, "indexA": j, "indexB":j+1, "animType": "check"})
+                     "arr":arr.copy(), "changeAnim": True, "indexA": j, "indexB":j+1, "animType": "check", "result": arr[j] > arr[j+1]})
                 step_nr += 1
                 if arr[j] > arr[j+1]:
                     steps.append(
