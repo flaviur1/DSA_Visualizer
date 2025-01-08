@@ -6,13 +6,21 @@ import SouthWestIcon from "@mui/icons-material/SouthWest";
 
 function AnimationBox({ dataStructure, steps, stepIndex }) {
   const makeSquare = (number, index) => {
-    if (steps.length !== 0) {
-      if (
-        stepIndex >= 0 &&
-        (index === steps[stepIndex].indexA || index === steps[stepIndex].indexB)
-      ) {
+    if (steps.length !== 0 && stepIndex >= 0) {
+      const currentStep = steps[stepIndex];
+
+      if (index === currentStep.indexA || index === currentStep.indexB) {
+        let className = "square selected";
+
+        if (currentStep.animType === "check") {
+          className += " comparing";
+        } else if (currentStep.animType === "switch") {
+          className +=
+            index === currentStep.indexA ? " swapping-left" : " swapping-right";
+        }
+
         return (
-          <div className="square selected" key={index}>
+          <div className={className} key={index}>
             {number}
             <div className="index">{index}</div>
           </div>

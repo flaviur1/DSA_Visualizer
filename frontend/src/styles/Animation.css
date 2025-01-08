@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   margin: 2px;
+  transition: transform 0.5s ease, outline-color 0.3s ease;
 }
 
 .index {
@@ -17,25 +18,44 @@
   transform: translateX(25px) translateY(-25px);
 }
 
-@keyframes moveToComparison {
-  from {
-    transform: translateY(0);
-  }
+.selected {
+  outline-color: aqua;
+  box-shadow: 0 0 10px aqua;
+}
 
-  to {
+.comparing {
+  transform: translateY(100px);
+  transition: transform 0.5s ease;
+}
+
+@keyframes swapLeft {
+  0% {
     transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(100px) translateX(74px);
+  }
+  100% {
+    transform: translateY(0) translateX(74px);
   }
 }
 
-.selected {
-  outline-color: aqua;
+@keyframes swapRight {
+  0% {
+    transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(100px) translateX(-74px);
+  }
+  100% {
+    transform: translateY(0) translateX(-74px);
+  }
+}
 
-  /* animation-name: ;
-  animation-duration: ;
-  animation-timing-function: ;
-  animation-delay: ;
-  animation-iteration-count: ;
-  animation-direction: ;
-  animation-fill-mode: ; */
-  animation: moveToComparison ;
+.swapping-left {
+  animation: swapLeft 1s forwards;
+}
+
+.swapping-right {
+  animation: swapRight 1s forwards;
 }
