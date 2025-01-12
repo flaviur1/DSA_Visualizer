@@ -32,7 +32,7 @@ function Menu() {
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
         <SimpleTreeView sx={{ width: 250, padding: 2 }}>
           <TreeItem2 itemId="1" label="Algorithms">
-            <TreeItem2 itemId="2" label="Sorting">
+            <TreeItem2 itemId="2" label="Sorting Algorithms">
               <TreeItem2
                 itemId="3"
                 label="Bubble Sort"
@@ -42,6 +42,18 @@ function Menu() {
                 itemId="4"
                 label="Quick Sort"
                 onClick={() => handleNodeClick("/alg/quick-sort")}
+              />
+            </TreeItem2>
+            <TreeItem2 itemId="5" label="Search Algorithms">
+              <TreeItem2
+                itemId="6"
+                label="Breadth First Search"
+                onClick={() => handleNodeClick("/alg/bfs")}
+              />
+              <TreeItem2
+                itemId="7"
+                label="Depth First Search"
+                onClick={() => handleNodeClick("/alg/dfs")}
               />
             </TreeItem2>
           </TreeItem2>

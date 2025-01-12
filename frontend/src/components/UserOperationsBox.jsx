@@ -18,10 +18,16 @@ function UserOperationsBox({
 
   const handleSubmit = async () => {
     try {
+      let treeOrNot = false;
+      if (currentOperation === "bfs") {
+        treeOrNot = true;
+      }
+
       const response = await axios.post(
         `http://127.0.0.1:8000//api/alg/${currentOperation}/`,
         {
           array: dataStructure,
+          tree: treeOrNot,
         }
       );
       onStepsReceived(response.data);
@@ -70,7 +76,7 @@ function UserOperationsBox({
   };
 
   const handleNext = () => {
-    if (index < stepArrayLength -1 ) index++;
+    if (index < stepArrayLength - 1) index++;
     setIndex(index);
   };
 
