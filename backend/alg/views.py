@@ -66,27 +66,33 @@ def bubble_sort_steps(request):
 
 
 def bfs_steps(request):
-
-    q = Queue()
-    visited = []
-    steps = []
-
     try:
-
         data = json.loads(request.body)
         arr = data.get("array")
         tree = data.get("tree")
-        if(not tree):
-            return JsonResponse({"error": "Simple array not supported for bfs"}, status=400)
-        
-        q.put(arr[0])
-        visited.append(arr[0])
+
+        steps = []
+        visited = [False] * len(tree)
+        q = Queue()
+
+        root = tree.index(-1)
+        q.put(root)
+        visited[root] = True
+        steps.append({"step": len(steps) + 1, "text": f"Mark node {root} as visited",
+                      "indexA": root, "indexB": None, "animType": "selected"})
 
         while not q.empty():
             current = q.get()
-            steps.append(current)
+            children = [i for i in range(len(tree)) if tree[i] == current]
+
+            for child in children:
+                if not visited[child]:
+                    q.put(child)
+                    visited[child] = True
+                    steps.append({"step": len(steps) + 1, "text": f"Mark node {child} as visited",
+                                  "indexA": child, "indexB": current, "animType": "selected"})
+
+        return JsonResponse(steps, safe=False)
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-
-    return JsonResponse(steps, safe=False)

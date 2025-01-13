@@ -43,13 +43,6 @@ function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot }) {
       if (index === currentStep.indexA || index === currentStep.indexB) {
         let className = "circle selected";
 
-        if (currentStep.animType === "check") {
-          className += " comparing";
-        } else if (currentStep.animType === "switch") {
-          className +=
-            index === currentStep.indexA ? " swapping-left" : " swapping-right";
-        }
-
         return (
           <div className={className} key={index}>
             {number}
@@ -70,10 +63,8 @@ function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot }) {
   return (
     <div className="AnimationBox">
       {treeOrNot
-        ? dataStructure.map((number, index) =>
-            makeCircle(number, index, stepIndex)
-          )
-        : dataStructure.map((number, index) =>
+        ? treeData.map((number, index) => makeCircle(number, index, stepIndex))
+        : arrayData.map((number, index) =>
             makeSquare(number, index, stepIndex)
           )}
     </div>

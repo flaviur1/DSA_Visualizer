@@ -43,7 +43,11 @@ function UserOperationsBox({
       alert("Please insert a valid integer.");
       return;
     }
-    setArrayData([...arrayData, parseInt(newElement)]);
+    if (treeOrNot) {
+      setTreeData([...treeData, parseInt(newElement)]);
+    } else {
+      setArrayData([...arrayData, parseInt(newElement)]);
+    }
     setNewElement("");
   };
 
@@ -57,18 +61,33 @@ function UserOperationsBox({
       return;
     }
     const indexToDelete = parseInt(newElement);
-    if (indexToDelete < 0 || indexToDelete > arrayData.length - 1) {
-      alert("Please enter an index that is valid.");
-      return;
+    if (treeOrNot) {
+      if (indexToDelete < 0 || indexToDelete > treeData.length - 1) {
+        alert("Please enter an index that is valid.");
+        return;
+      }
+    } else {
+      if (indexToDelete < 0 || indexToDelete > arrayData.length - 1) {
+        alert("Please enter an index that is valid.");
+        return;
+      }
     }
-
-    const newData = arrayData.filter((val, index) => index !== indexToDelete);
-    setArrayData(newData);
+    if (treeOrNot) {
+      const newData = treeData.filter((val, index) => index !== indexToDelete);
+      setTreeData(newData);
+    } else {
+      const newData = arrayData.filter((val, index) => index !== indexToDelete);
+      setArrayData(newData);
+    }
     setNewElement("");
   };
 
   const handleClear = async () => {
-    setArrayData([]);
+    if (treeOrNot) {
+      setTreeData([-1]);
+    } else {
+      setArrayData([]);
+    }
   };
 
   const handleNext = () => {
