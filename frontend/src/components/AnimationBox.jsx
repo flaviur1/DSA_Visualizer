@@ -33,14 +33,16 @@ function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot ,operat
       if (index === arrayData.length - 1) {
         className += " enqueuing";
       }
-      if (index === 0) {
+      if (index === 0 && number.isDequeuing) {
         className += " dequeuing";
       }
     }
 
+    const displayNumber = typeof number === 'object' ? number.value : number;
+
     return (
       <div className={className} key={index}>
-        {number}
+        {displayNumber}
         <div className="index">{index}</div>
       </div>
     );

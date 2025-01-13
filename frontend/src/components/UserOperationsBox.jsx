@@ -57,8 +57,13 @@ function UserOperationsBox({
         alert("Queue is empty!");
         return;
       }
-      const newData = arrayData.slice(1);
-      setArrayData(newData);
+      const tempArray = [...arrayData];
+      tempArray[0] = { ...arrayData[0], isDequeuing: true };
+      setArrayData(tempArray);
+
+      setTimeout(() => {
+        setArrayData(arrayData.slice(1));
+      }, 1000);
       return;
     }
 
