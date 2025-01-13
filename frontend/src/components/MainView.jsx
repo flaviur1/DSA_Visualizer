@@ -10,7 +10,8 @@ import "../styles/MainView.css";
 
 function MainView() {
   const [steps, setSteps] = useState([]);
-  const [dataStructure, setDataStructure] = useState([2, 5, 4, 3, 2, 1]);
+  const [arrayData, setArrayData] = useState([2, 5, 4, 3, 2, 1]);
+  const [treeData, setTreeData] = useState([0, 1, 1, 2, 3]); // We use a father array to represent the tree
   const [index, setIndex] = useState(-1);
   const [treeOrNot, setTreeOrNot] = useState(false);
   const { operation } = useParams();
@@ -23,7 +24,7 @@ function MainView() {
 
   useEffect(() => {
     if (steps.length !== 0 && index >= 0) {
-      setDataStructure(steps[index].arr);
+      setArrayData(steps[index].arr);
     }
   }, [steps, index]);
 
@@ -41,7 +42,8 @@ function MainView() {
     <div className="MainView">
       <div className="AnimationBox">
         <AnimationBox
-          dataStructure={dataStructure}
+          arrayData={arrayData}
+          treeData={treeData}
           steps={steps}
           stepIndex={index}
           treeOrNot={treeOrNot}
@@ -55,8 +57,10 @@ function MainView() {
       </div>
       <div className="UserOperationsBox">
         <UserOperationsBox
-          dataStructure={dataStructure}
-          setDataStructure={setDataStructure}
+          arrayData={arrayData}
+          setArrayData={setArrayData}
+          treeData={treeData}
+          setTreeData={setTreeData}
           currentOperation={operation}
           onStepsReceived={handleStepsUpdate}
           index={index}

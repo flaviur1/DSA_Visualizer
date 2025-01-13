@@ -6,8 +6,10 @@ import TextField from "@mui/material/TextField";
 import "../styles/UserOperations.css";
 
 function UserOperationsBox({
-  dataStructure,
-  setDataStructure,
+  arrayData,
+  setArrayData,
+  treeData,
+  setTreeData,
   currentOperation,
   onStepsReceived,
   index,
@@ -19,12 +21,11 @@ function UserOperationsBox({
 
   const handleSubmit = async () => {
     try {
-
       const response = await axios.post(
         `http://127.0.0.1:8000//api/alg/${currentOperation}/`,
         {
-          array: dataStructure,
-          tree: treeOrNot,
+          array: arrayData,
+          tree: treeData,
         }
       );
       onStepsReceived(response.data);
@@ -42,7 +43,7 @@ function UserOperationsBox({
       alert("Please insert a valid integer.");
       return;
     }
-    setDataStructure([...dataStructure, parseInt(newElement)]);
+    setArrayData([...arrayData, parseInt(newElement)]);
     setNewElement("");
   };
 
@@ -56,20 +57,18 @@ function UserOperationsBox({
       return;
     }
     const indexToDelete = parseInt(newElement);
-    if (indexToDelete < 0 || indexToDelete > dataStructure.length - 1) {
+    if (indexToDelete < 0 || indexToDelete > arrayData.length - 1) {
       alert("Please enter an index that is valid.");
       return;
     }
 
-    const newData = dataStructure.filter(
-      (val, index) => index !== indexToDelete
-    );
-    setDataStructure(newData);
+    const newData = arrayData.filter((val, index) => index !== indexToDelete);
+    setArrayData(newData);
     setNewElement("");
   };
 
   const handleClear = async () => {
-    setDataStructure([]);
+    setArrayData([]);
   };
 
   const handleNext = () => {

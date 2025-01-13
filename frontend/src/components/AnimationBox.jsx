@@ -4,7 +4,7 @@ import "../styles/Animation.css";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
 import SouthWestIcon from "@mui/icons-material/SouthWest";
 
-function AnimationBox({ dataStructure, steps, stepIndex, treeOrNot }) {
+function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot }) {
   const makeSquare = (number, index) => {
     if (steps.length !== 0 && stepIndex >= 0) {
       const currentStep = steps[stepIndex];

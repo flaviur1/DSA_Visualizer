@@ -11,9 +11,6 @@ def bubble_sort_steps(request):
         data = json.loads(request.body)
         arr = data.get("array")
         tree = data.get("tree")
-        if(tree):
-            return JsonResponse({"error": "Tree not supported for bubble sort"}, status=400)
-        
 
         step_nr = 1
         iteration_nr = 1
@@ -91,3 +88,5 @@ def bfs_steps(request):
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse(steps, safe=False)
