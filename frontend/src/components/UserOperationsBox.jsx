@@ -52,6 +52,16 @@ function UserOperationsBox({
   };
 
   const handleDelete = async () => {
+    if (currentOperation === "queue") {
+      if (arrayData.length === 0) {
+        alert("Queue is empty!");
+        return;
+      }
+      const newData = arrayData.slice(1);
+      setArrayData(newData);
+      return;
+    }
+
     if (newElement === "") {
       alert("Please enter the index in the text field first.");
       return;
@@ -114,11 +124,11 @@ function UserOperationsBox({
       />
 
       <button className="button insert" onClick={handleInsert}>
-        Insert
+        {currentOperation === "queue" ? "Enqueue" : "Insert"}
       </button>
 
       <button className="button delete" onClick={handleDelete}>
-        Delete
+        {currentOperation === "queue" ? "Dequeue" : "Delete"}
       </button>
 
       <button className="button clear" onClick={handleClear}>
