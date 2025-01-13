@@ -4,7 +4,7 @@ import "../styles/Animation.css";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
 import SouthWestIcon from "@mui/icons-material/SouthWest";
 
-function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot }) {
+function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot ,operation}) {
   const makeSquare = (number, index) => {
     if (steps.length !== 0 && stepIndex >= 0) {
       const currentStep = steps[stepIndex];
@@ -28,8 +28,18 @@ function AnimationBox({ arrayData, treeData, steps, stepIndex, treeOrNot }) {
       }
     }
 
+    let className = "square";
+    if (operation === "queue") {
+      if (index === arrayData.length - 1) {
+        className += " enqueuing";
+      }
+      if (index === 0) {
+        className += " dequeuing";
+      }
+    }
+
     return (
-      <div className="square" key={index}>
+      <div className={className} key={index}>
         {number}
         <div className="index">{index}</div>
       </div>

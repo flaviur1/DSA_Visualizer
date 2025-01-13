@@ -47,6 +47,7 @@ function MainView() {
           steps={steps}
           stepIndex={index}
           treeOrNot={treeOrNot}
+          operation={operation}
         />
       </div>
       <div className="CodeBox">
