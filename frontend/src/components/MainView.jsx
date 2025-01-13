@@ -12,6 +12,7 @@ function MainView() {
   const [steps, setSteps] = useState([]);
   const [dataStructure, setDataStructure] = useState([2, 5, 4, 3, 2, 1]);
   const [index, setIndex] = useState(-1);
+  const [treeOrNot, setTreeOrNot] = useState(false);
   const { operation } = useParams();
 
   const handleStepsUpdate = (newSteps) => {
@@ -19,11 +20,22 @@ function MainView() {
   };
 
   console.log(steps);
+
   useEffect(() => {
     if (steps.length !== 0 && index >= 0) {
       setDataStructure(steps[index].arr);
     }
   }, [steps, index]);
+
+  useEffect(() => {
+    if (operation !== undefined && operation === "bfs") {
+      setTreeOrNot(true);
+    } else {
+      setTreeOrNot(false);
+    }
+  }, [operation]);
+
+  console.log(treeOrNot);
 
   return (
     <div className="MainView">
@@ -32,6 +44,7 @@ function MainView() {
           dataStructure={dataStructure}
           steps={steps}
           stepIndex={index}
+          treeOrNot={treeOrNot}
         />
       </div>
       <div className="CodeBox">
@@ -49,6 +62,7 @@ function MainView() {
           index={index}
           setIndex={setIndex}
           stepArrayLength={steps.length}
+          treeOrNot={treeOrNot}
         />
       </div>
     </div>

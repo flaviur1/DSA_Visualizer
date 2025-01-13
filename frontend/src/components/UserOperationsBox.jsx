@@ -13,15 +13,12 @@ function UserOperationsBox({
   index,
   setIndex,
   stepArrayLength,
+  treeOrNot,
 }) {
   const [newElement, setNewElement] = useState("");
 
   const handleSubmit = async () => {
     try {
-      let treeOrNot = false;
-      if (currentOperation === "bfs") {
-        treeOrNot = true;
-      }
 
       const response = await axios.post(
         `http://127.0.0.1:8000//api/alg/${currentOperation}/`,

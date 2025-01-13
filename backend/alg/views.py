@@ -72,12 +72,22 @@ def bfs_steps(request):
 
     q = Queue()
     visited = []
+    steps = []
 
     try:
 
         data = json.loads(request.body)
         arr = data.get("array")
+        tree = data.get("tree")
+        if(not tree):
+            return JsonResponse({"error": "Simple array not supported for bfs"}, status=400)
         
-        
+        q.put(arr[0])
+        visited.append(arr[0])
+
+        while not q.empty():
+            current = q.get()
+            steps.append(current)
+
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
